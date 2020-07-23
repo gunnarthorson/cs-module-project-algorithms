@@ -2,10 +2,25 @@
 Input: a List of integers where every int except one shows up twice
 Returns: an integer
 '''
-def single_number(arr):
+def single_number(arr, num):
     # Your code here
+    arr.sort()
+    start_count = len(arr) + 1
+    uncommon = -1
+    current = 1
+    for i in range(1, len(arr)):
+        if arr[i] == arr[i - 1]:
+            current += 1
+        else:
+            if current < start_count:
+                start_count = current
+                uncommon = arr[len(arr) - 1]
+    return uncommon
 
-    pass
+    res = arr[0]
+    for i in range(1, num):
+        res = res ^ arr[i]
+    return res
 
 
 if __name__ == '__main__':
